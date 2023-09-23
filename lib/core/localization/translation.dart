@@ -1,12 +1,17 @@
 import 'package:get/get.dart';
 
-class Langugs extends Translations{
+class LangugsTranslation extends Translations{
   @override
  
   Map<String, Map<String, String>> get keys => {
 
-    'ar':{},
-    'en':{}
+    'ar':{
+      '1':'fdsaxzX'
+
+    },
+    'en':{
+      '1':'fghjk'
+    }
 
 
   };

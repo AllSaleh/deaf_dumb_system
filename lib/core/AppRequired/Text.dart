@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TexT extends StatelessWidget {
+class text extends StatelessWidget {
   final TextDecoration? line;
   final double? hight;
   final TextAlign? align;
@@ -8,7 +8,7 @@ class TexT extends StatelessWidget {
   final FontWeight? weight;
   final String title;
   final Color? color;
-  const TexT(
+  const text(
       {super.key,
       this.size,
       required this.title,

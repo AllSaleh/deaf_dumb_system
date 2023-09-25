@@ -1,8 +1,10 @@
-import 'package:deaf_dumb_system/core/AppRequired/AppImages.dart';
-import 'package:deaf_dumb_system/core/AppRequired/Text.dart';
+
+
+import 'package:deaf_dumb_system/core/apprequired/Text.dart';
 import 'package:deaf_dumb_system/servess.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:deaf_dumb_system/core/apprequired/AppImages.dart';
 
 class DownoladManagment extends StatelessWidget {
   final Function() ontap;
@@ -34,6 +36,9 @@ class DownoladManagment extends StatelessWidget {
         ),
         leading: Image.asset(
           AppImages.download2,
+          color: myservrss.sharedPreferences.getBool('dark') == true
+              ? Colors.white
+              : Colors.black,
           height: MediaQuery.of(context).size.height / 35,
         ),
         trailing: IconButton(
@@ -41,7 +46,6 @@ class DownoladManagment extends StatelessWidget {
           icon: const Icon(
             Icons.arrow_forward,
             size: 30,
-            color: Colors.black,
           ),
         ),
       ),

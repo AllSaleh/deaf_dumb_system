@@ -5,6 +5,7 @@ import 'package:jiffy/jiffy.dart';
 
 class ViewController extends GetxController {
   Myservrss myservrss = Get.find();
+  bool description = false;
   changelocal() async {
     if (myservrss.sharedPreferences.getString('lang') == 'ar') {
       await Jiffy.setLocale('ar');
@@ -18,6 +19,12 @@ class ViewController extends GetxController {
     AppImages.download3,
     AppImages.svae
   ];
+  List<String> title = ['22'.tr, '23'.tr, '24'.tr, '25'.tr, '26'.tr];
+
+  showdescription() {
+    description = description == true ? false : true;
+    update();
+  }
 
   @override
   void onInit() {

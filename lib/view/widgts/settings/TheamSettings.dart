@@ -13,7 +13,7 @@ class TheamSettings extends StatelessWidget {
     Get.put(SettingsController());
 
     return GetBuilder<SettingsController>(
-        builder: ((controller) => Card(
+        builder: (controller) => Card(
             elevation: 4,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -36,13 +36,12 @@ class TheamSettings extends StatelessWidget {
                       Row(
                         children: [
                           text(title: '11'.tr),
-                          GetBuilder<SettingsController>(
-                              builder: (controller) => Switch(
-                                  activeColor: const Color(0xffD7D9D7),
-                                  value: controller.swich,
-                                  onChanged: (val) {
-                                    controller.onswich(val);
-                                  }))
+                          Switch(
+                              // activeColor: const Color(0xffD7D9D7),
+                              value: controller.swich,
+                              onChanged: (val) {
+                                controller.onswich(val);
+                              })
                         ],
                       )
                     ],
@@ -52,6 +51,6 @@ class TheamSettings extends StatelessWidget {
                   ),
                 ],
               ),
-            ))));
+            )));
   }
 }

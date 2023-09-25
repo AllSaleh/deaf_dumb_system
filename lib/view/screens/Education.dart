@@ -1,13 +1,13 @@
 import 'package:deaf_dumb_system/core/AppRequired/Text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 
 class Education extends StatelessWidget {
   const Education({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

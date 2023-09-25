@@ -1,7 +1,6 @@
-import 'package:deaf_dumb_system/controller/HomeController.dart';
-import 'package:deaf_dumb_system/core/functions/on_moreButton.dart';
+import 'package:deaf_dumb_system/controller/homeController.dart';
 import 'package:deaf_dumb_system/servess.dart';
-import 'package:deaf_dumb_system/view/widgts/home/CustomListTil.dart';
+import 'package:deaf_dumb_system/view/widgts/home/customlisttile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -66,9 +65,15 @@ class CustomVideosList extends GetView<HomeController> {
               ),
               IconButton(
                   onPressed: () {
-                    onmoreButton(
-                        context,
-                        Column(
+                    Get.bottomSheet(Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 50),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
                             CustomListTile(
                                 ontap: () {},
@@ -88,14 +93,26 @@ class CustomVideosList extends GetView<HomeController> {
                                 image: AppImages.share),
                             CustomListTile(
                               ontap: () {
-                                showbarcode(
-                                    context, Image.asset(AppImages.code2));
+                                Get.back();
+                                Get.bottomSheet(Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 100),
+                                  child: Container(
+                                      height: 500,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      child: Image.asset(AppImages.code2)),
+                                ));
                               },
                               title: 'QR Code',
                               image: AppImages.barcode,
                             )
                           ],
-                        ));
+                        ),
+                      ),
+                    ));
                   },
                   icon: const Icon(Icons.more_vert))
             ],

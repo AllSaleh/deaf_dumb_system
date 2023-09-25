@@ -1,6 +1,9 @@
-import 'package:deaf_dumb_system/core/localization/changLocal.dart';
+import 'package:deaf_dumb_system/core/AppRequired/appTheam.dart';
+import 'package:deaf_dumb_system/core/functions/translatedata.dart';
+import 'package:deaf_dumb_system/core/localization/changlocal.dart';
 import 'package:deaf_dumb_system/routs.dart';
 import 'package:deaf_dumb_system/servess.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'core/localization/translation.dart';
@@ -21,9 +24,18 @@ class MyApp extends StatelessWidget {
     LocalizationsController controller = Get.put(LocalizationsController());
     return GetMaterialApp(
       locale: controller.language,
-      theme: controller.apptheam,
+      // themeMode: myservrss.sharedPreferences.getBool('dark')==true?Theames.dark:null,
+      theme: myservrss.sharedPreferences.getBool('dark') == true
+          ? Theames.dark
+          : myservrss.sharedPreferences.getBool('dark') == false
+              ? Theames.light
+              : Theames.light
+      // ThemeData(fontFamily: 'Cairo'),
+
+      // ,controller.apptheam,
+      ,
       translations: LangugsTranslation(),
-    //  home:Homescreen(),
+
       getPages: pages,
 
       debugShowCheckedModeBanner: false,

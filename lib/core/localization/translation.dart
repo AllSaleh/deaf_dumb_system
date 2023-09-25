@@ -24,7 +24,21 @@ class LangugsTranslation extends Translations {
           '18': 'حفظ في قائمة"المشاهده لاحقا"',
           '19': 'تنزيل الفيديو',
           '20': 'مشاركة',
-          '21':'نسخ الرابط'
+          '21': 'نسخ الرابط',
+          '22': 'اعجبني',
+          '23': 'لم يعجبني',
+          '24': 'مشاركه',
+          '25': 'تنزيل',
+          '26': 'حفظ',
+          '27': 'مشترك',
+          '28': 'اشتراك',
+          '29': 'الرئيسيه',
+          '30': 'السجل',
+          '31': 'فيديوهاتك',
+          '32': 'التنزيلات',
+          '33':'ايقاف مؤقت',
+          '34':'الحذف من الفيديوهات التي تم تنزيلها',
+          '35':' تم الحذف من الفيديوهات التي تم تنزيلها'
         },
         'en': {
           '1': 'Education',
@@ -47,7 +61,22 @@ class LangugsTranslation extends Translations {
           '18': '"Save in the "View List Later',
           '19': 'Download Video',
           '20': 'Share',
-          '21':'Copy Link'
+          '21': 'Copy Link',
+          '22': 'Like',
+          '23': 'DisLike',
+          '24': 'Share',
+          '25': 'Download',
+          '26': 'Save',
+          '27': 'Members',
+          '28': 'Subscription',
+          '29': 'Home',
+          '30': 'Hisory',
+          '31': 'Your Videos',
+          '32': 'Downloads',
+          '33':'Pause',
+          '34':'Delete From Downloaded Videos',
+          '35':'Done Deleted From Downloaded Videos'
+
         }
       };
 }

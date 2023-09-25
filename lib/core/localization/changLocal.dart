@@ -1,9 +1,13 @@
+
 import 'package:deaf_dumb_system/core/AppRequired/appTheam.dart';
 import 'package:deaf_dumb_system/servess.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LocalizationsController extends GetxController {
+
+
+  
   Myservrss myservrss = Get.find();
   ThemeData apptheam = englishTheam;
   Locale? language;

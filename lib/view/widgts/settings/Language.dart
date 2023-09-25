@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/AppRequired/Text.dart';
-import '../../../core/localization/changLocal.dart';
+import '../../../core/localization/changlocal.dart';
 import '../../../servess.dart';
 
 class LanguageSetting extends StatelessWidget {
@@ -19,7 +19,7 @@ class LanguageSetting extends StatelessWidget {
     return Card(
       elevation: 4,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding:const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -51,7 +51,7 @@ class LanguageSetting extends StatelessWidget {
             SizedBox(
               height: height / 95,
             ),
-            Divider(
+         const   Divider(
               height: .5,
               thickness: .8,
             ),

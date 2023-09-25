@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+
 import '../../../core/AppRequired/Text.dart';
 
 class CustomItemsBottomBar extends StatelessWidget {
   final String title;
   final IconData icon;
-  // final Color? color;
+
 
   const CustomItemsBottomBar({
     super.key,

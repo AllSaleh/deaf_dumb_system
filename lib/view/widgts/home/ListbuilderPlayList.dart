@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../core/AppRequired/Text.dart';
 
 class ListBuilderPlayList extends StatelessWidget {
@@ -25,7 +24,6 @@ class ListBuilderPlayList extends StatelessWidget {
           child: const Center(
               child: text(
             title: 'اشكال و الوان',
-            color: Colors.black,
             size: 18,
           )),
         );

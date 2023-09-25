@@ -18,12 +18,6 @@ class AppImages {
   static const String share2 = 'images/Vector (13).png';
   static const String download3 = 'images/Frame.png';
   static const String svae = 'images/Frame (1).png';
-
-
-
-
-
-
-
-
+  static const String delete = 'images/Vector (16).png';
+  static const String stop = 'images/Vector (15).png';
 }

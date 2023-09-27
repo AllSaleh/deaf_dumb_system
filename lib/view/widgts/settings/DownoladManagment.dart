@@ -1,5 +1,3 @@
-
-
 import 'package:deaf_dumb_system/core/apprequired/Text.dart';
 import 'package:deaf_dumb_system/servess.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +36,7 @@ class DownoladManagment extends StatelessWidget {
           AppImages.download2,
           color: myservrss.sharedPreferences.getBool('dark') == true
               ? Colors.white
-              : Colors.black,
+              : null,
           height: MediaQuery.of(context).size.height / 35,
         ),
         trailing: IconButton(
@@ -46,6 +44,7 @@ class DownoladManagment extends StatelessWidget {
           icon: const Icon(
             Icons.arrow_forward,
             size: 30,
+            
           ),
         ),
       ),

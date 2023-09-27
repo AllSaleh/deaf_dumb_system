@@ -1,9 +1,9 @@
 import 'package:deaf_dumb_system/core/AppRequired/Text.dart';
 import 'package:deaf_dumb_system/core/functions/translatedata.dart';
+import 'package:deaf_dumb_system/view/widgts/library/customrowlibrary.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../widgts/library/CustomHistory.dart';
-import '../widgts/library/customlisttilelibrary.dart';
 
 class Library extends StatelessWidget {
   const Library({super.key});
@@ -11,6 +11,8 @@ class Library extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
+
+
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
@@ -22,7 +24,7 @@ class Library extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {},
-              icon:const Icon(
+              icon: const Icon(
                 Icons.search,
                 size: 30,
               )),
@@ -52,20 +54,19 @@ class Library extends StatelessWidget {
             const CustomHistoryView(),
             Column(
               children: [
-                CustomListTileLibrary(
-                  subtitle: '',
+                CustomRowLibrary(
+                    icon: Icons.history, title: '30'.tr, ontap: () {},widget: Container(),),
+                CustomRowLibrary(
+                  icon: Icons.video_library,
+                  title: '31'.tr,
                   ontap: () {},
-                  title: '30'.tr,
-                  icon: Icons.history,
+                  widget: Container(),
                 ),
-                CustomListTileLibrary(
-                    subtitle: '',
-                    ontap: () {},
-                    icon: Icons.video_library_outlined,
-                    title: '31'.tr),
-                CustomListTileLibrary(
+                CustomRowLibrary(
+                  icon: Icons.download_rounded,
+                  title: '32'.tr,
                   ontap: () {},
-                  trilling: CircleAvatar(
+                  widget: CircleAvatar(
                     backgroundColor:
                         myservrss.sharedPreferences.getBool('dark') == true
                             ? Colors.white
@@ -79,9 +80,6 @@ class Library extends StatelessWidget {
                           : Colors.white,
                     ),
                   ),
-                  icon: Icons.download_rounded,
-                  title: '32'.tr,
-                  subtitle: 'فيديو واحد',
                 )
               ],
             ),

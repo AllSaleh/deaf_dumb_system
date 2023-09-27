@@ -60,9 +60,11 @@ class Search extends StatelessWidget {
                           height: 40,
                           width: 35,
                           decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Color(0xffEBEBEB)),
-                          child: const Icon(Icons.mic),
+                              shape: BoxShape.circle, color: Colors.black),
+                          child: const Icon(
+                            Icons.mic,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     )

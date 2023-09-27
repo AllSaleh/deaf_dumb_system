@@ -23,13 +23,14 @@ class CustomListTile extends StatelessWidget {
         title: title,
         weight: FontWeight.bold,
         size: 18,
+        color: Colors.black,
         align: myservrss.sharedPreferences.getString('lang') == 'en'
             ? TextAlign.end
             : TextAlign.start,
       ),
       leading: Image.asset(
         image,
-        height: 25,
+        height: 20,
         // color: imagecolor,
         fit: BoxFit.fill,
       ),

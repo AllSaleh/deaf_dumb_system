@@ -1,6 +1,4 @@
-import 'package:deaf_dumb_system/core/AppRequired/Text.dart';
 import 'package:flutter/material.dart';
-
 
 class Education extends StatelessWidget {
   const Education({super.key});
@@ -14,7 +12,7 @@ class Education extends StatelessWidget {
           SizedBox(
             height: 50,
           ),
-          text(title: 'title')
+          // text(title: 'title')
           // SvgPicture.asset(
           //   'images/logo1.svg',
           //   semanticsLabel: 'sda',

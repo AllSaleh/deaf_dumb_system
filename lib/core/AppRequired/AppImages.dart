@@ -13,11 +13,11 @@ class AppImages {
   static const String barcode = 'images/Vector (7).png';
   static const String download2 = 'images/Vector (9).png';
   static const String code2 = 'images/Vector (10).png';
-  static const String like = 'images/Vector (11).png';
-  static const String dislike = 'images/Vector (12).png';
-  static const String share2 = 'images/Vector (13).png';
-  static const String download3 = 'images/Frame.png';
-  static const String svae = 'images/Frame (1).png';
+  static const String like = 'images/Vector (3).svg';
+  static const String dislike = 'images/Vector.svg';
+  static const String share2 = 'images/Vector (2).svg';
+  static const String download3 = 'images/Vector (4).svg';
+  static const String svae = 'images/Group.svg';
   static const String delete = 'images/Vector (16).png';
   static const String stop = 'images/Vector (15).png';
 }

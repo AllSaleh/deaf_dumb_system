@@ -38,7 +38,8 @@ class LangugsTranslation extends Translations {
           '32': 'التنزيلات',
           '33':'ايقاف مؤقت',
           '34':'الحذف من الفيديوهات التي تم تنزيلها',
-          '35':' تم الحذف من الفيديوهات التي تم تنزيلها'
+          '35':' تم الحذف من الفيديوهات التي تم تنزيلها',
+          '36':'الوصف'
         },
         'en': {
           '1': 'Education',
@@ -75,7 +76,9 @@ class LangugsTranslation extends Translations {
           '32': 'Downloads',
           '33':'Pause',
           '34':'Delete From Downloaded Videos',
-          '35':'Done Deleted From Downloaded Videos'
+          '35':'Done Deleted From Downloaded Videos',
+          '36':'Description',
+        
 
         }
       };

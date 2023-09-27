@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 import '../../../core/AppRequired/Text.dart';
 
 class CustomItemsBottomBar extends StatelessWidget {
   final String title;
   final IconData icon;
-
 
   const CustomItemsBottomBar({
     super.key,
@@ -17,7 +15,11 @@ class CustomItemsBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+    return SizedBox(
+      height: height / 14,
+      width: width / 4.5,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

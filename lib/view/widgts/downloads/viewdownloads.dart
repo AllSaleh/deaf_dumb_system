@@ -32,91 +32,92 @@ class CustomViewDownloads extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset(
-            'images/ss.PNG',
-            height: height / 7,
-            fit: BoxFit.fill,
-          ),
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ListTile(
-                  title: text(
-                    title: 'التصنيف:اتجاهات و مواضع المصطلح الاعلى',
-                    weight: FontWeight.bold,
-                    size: 16,
-                    align: myservrss.sharedPreferences.getString('lang') == 'en'
-                        ? TextAlign.end
-                        : TextAlign.start,
-                  ),
-                  subtitle: text(
-                      title: 'الجمعيه السعوديه',
-                      size: 15,
-                      align:
-                          myservrss.sharedPreferences.getString('lang') == 'en'
-                              ? TextAlign.end
-                              : TextAlign.start),
-                  trailing: IconButton(
-                      onPressed: () {
-                        Get.bottomSheet(Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(vertical: 20),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  CustomListTileDownloads(
-                                    ontap: () {},
-                                    title: '33'.tr,
-                                    image: AppImages.stop,
-                                  ),
-                                  CustomListTileDownloads(
-                                    ontap: () {
-                                      Get.back();
-                                      Get.rawSnackbar(
-                                          margin: const EdgeInsets.symmetric(
-                                              vertical: 20, horizontal: 20),
-                                          borderRadius: 20,
-                                          messageText: Center(
-                                            child: text(
-                                              title: '35'.tr,
-                                              size: 18,
-                                              color: Colors.white,
-                                            ),
-                                          ));
-                                    },
-                                    title: '34'.tr,
-                                    image: AppImages.delete,
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ));
-                      },
-                      icon: const Icon(
-                        Icons.more_vert_outlined,
-                        size: 30,
-                      )),
-                ),
-                Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: text(
-                      title: '${100} ${'4'.tr}',
-                      size: 13,
-                    ))
-              ],
+            child: Image.asset(
+              'images/555 1.png',
+              height: height / 8,
             ),
-          )
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const text(
+                title: 'التصنيف:اتجاهات و مواضع المصطلح ',
+                weight: FontWeight.bold,
+                size: 14,
+              ),
+              const text(
+                title: 'الجمعيه السعوديه',
+                size: 15,
+              ),
+              text(
+                title: '${100} ${'4'.tr}',
+                size: 13,
+              )
+            ],
+          ),
+          IconButton(
+              onPressed: () {
+                Get.bottomSheet(Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          CustomListTileDownloads(
+                            ontap: () {},
+                            title: '33'.tr,
+                            image: AppImages.stop,
+                          ),
+                          CustomListTileDownloads(
+                            ontap: () {
+                              Get.back();
+                              Get.rawSnackbar(
+                                  backgroundColor: myservrss.sharedPreferences
+                                              .getBool('dark') ==
+                                          true
+                                      ? Colors.white
+                                      : Colors.black,
+                                  margin: const EdgeInsets.symmetric(
+                                      vertical: 20, horizontal: 20),
+                                  borderRadius: 20,
+                                  messageText: Center(
+                                    child: text(
+                                      title: '35'.tr,
+                                      size: 15,
+                                      color: myservrss.sharedPreferences
+                                                  .getBool('dark') ==
+                                              true
+                                          ? Colors.black
+                                          : Colors.white,
+                                    ),
+                                  ));
+                            },
+                            title: '34'.tr,
+                            image: AppImages.delete,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ));
+              },
+              icon: const Icon(
+                Icons.more_vert_outlined,
+                size: 30,
+              ))
         ],
       ),
     );

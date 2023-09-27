@@ -1,56 +1,59 @@
 import 'package:deaf_dumb_system/controller/homeController.dart';
-import 'package:deaf_dumb_system/controller/homescreencontroller.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../core/AppRequired/Text.dart';
 import '../widgts/home/Custombottmbarite,s.dart';
 
-class Homescreen extends StatelessWidget {
+class Homescreen extends GetView<HomeController> {
   const Homescreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    HomeController homeController = Get.put(HomeController());
-    HomeScreenController homeScreenController = Get.put(HomeScreenController());
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
 
-    return GetBuilder<HomeScreenController>(
+    Get.put(HomeController());
+
+    return GetBuilder<HomeController>(
         builder: (controller) => Scaffold(
-              bottomNavigationBar: homeController.isSearch == false
+              bottomNavigationBar: controller.isSearch == false
                   ? Container(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      padding: const EdgeInsets.symmetric(vertical: 7),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             ...List.generate(
                                 4,
                                 (index) => InkWell(
                                       onTap: () {
-                                        homeScreenController.changepage(index);
+                                        controller.changepage(index);
                                       },
                                       child: index == 0
-                                          ? Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                ClipOval(
-                                                  child: Image.asset(
-                                                      'images/sh.png'),
-                                                ),
-                                                text(
-                                                  title: homeScreenController
-                                                      .titls[index],
-                                                  size: 14,
-                                                  // color: color,
-                                                )
-                                              ],
+                                          ? SizedBox(
+                                              height: height / 14,
+                                              width: width / 6,
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  ClipOval(
+                                                    child: Image.asset(
+                                                        'images/sh.png'),
+                                                  ),
+                                                  text(
+                                                    title:
+                                                        controller.titls[index],
+                                                    size: 14,
+                                                    // color: color,
+                                                  )
+                                                ],
+                                              ),
                                             )
                                           : CustomItemsBottomBar(
-                                              title: homeScreenController
-                                                  .titls[index],
-                                              icon: homeScreenController
-                                                  .icons[index],
+                                              title: controller.titls[index],
+                                              icon: controller.icons[index],
                                             ),
                                     ))
                           ],
@@ -58,8 +61,7 @@ class Homescreen extends StatelessWidget {
                       ),
                     )
                   : null,
-              body: homeScreenController.pages
-                  .elementAt(homeScreenController.curntpage),
+              body: controller.pages.elementAt(controller.curntpage),
             ));
   }
 }

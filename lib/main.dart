@@ -3,6 +3,7 @@ import 'package:deaf_dumb_system/core/functions/translatedata.dart';
 import 'package:deaf_dumb_system/core/localization/changlocal.dart';
 import 'package:deaf_dumb_system/routs.dart';
 import 'package:deaf_dumb_system/servess.dart';
+import 'package:deaf_dumb_system/test.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -35,10 +36,14 @@ class MyApp extends StatelessWidget {
       // ,controller.apptheam,
       ,
       translations: LangugsTranslation(),
-
+      // home: Test(),
+// 
       getPages: pages,
 
       debugShowCheckedModeBanner: false,
     );
   }
 }
+
+
+

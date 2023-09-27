@@ -1,11 +1,11 @@
-// enum StatusRequest{
+enum StatusRequst{
 
-//   Sucsess,
-//   Loading,
-//   Filure,
-//   NotEnternet,
-//   filedserver
+  Sucsess,
+  Loading,
+  Filure,
+  NotEnternet,
+  filedserver
 
 
 
-// }
+}

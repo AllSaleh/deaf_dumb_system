@@ -22,13 +22,13 @@ class CustomListTileDownloads extends StatelessWidget {
       onTap: ontap,
       leading: Image.asset(
         image,
-        height: 30,
+        height: 20,
         fit: BoxFit.fill,
       ),
       title: text(
         title: title,
         color: Colors.black,
-        size: 20,
+        size: 18,
         align: myservrss.sharedPreferences.getString('lang') == 'en'
             ? TextAlign.end
             : TextAlign.start,

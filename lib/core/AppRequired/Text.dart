@@ -8,7 +8,7 @@ class text extends StatelessWidget {
   final FontWeight? weight;
   final String title;
   final Color? color;
-  const text(
+  const text( 
       {super.key,
       this.size,
       required this.title,

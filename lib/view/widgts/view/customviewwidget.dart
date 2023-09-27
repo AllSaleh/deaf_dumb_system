@@ -1,16 +1,26 @@
+
+
 import 'package:deaf_dumb_system/controller/viewcontroller.dart';
 import 'package:deaf_dumb_system/core/AppRequired/Text.dart';
 import 'package:deaf_dumb_system/servess.dart';
+import 'package:deaf_dumb_system/view/widgts/view/Custoncontiner.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:video_player/video_player.dart';
 
 import '../../../core/AppRequired/AppImages.dart';
 import 'discrition.dart';
 
-class CustomViewWidget extends StatelessWidget {
+class CustomViewWidget extends StatefulWidget {
   const CustomViewWidget({super.key});
 
+  @override
+  State<CustomViewWidget> createState() => _CustomViewWidgetState();
+}
+
+class _CustomViewWidgetState extends State<CustomViewWidget> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -35,74 +45,161 @@ class Viewsdetils extends GetView<ViewController> {
         builder: (controller) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Stack(
-                  children: [
-                    Image.asset(
-                      'images/ss.PNG',
+                controller.playerController.value.isInitialized == true
+                    ? InkWell(
+                        onTap: () {
+                          controller.onpressedvideo();
+                        },
+                        child: Stack(
+                          children: [
+                            AspectRatio(
+                              aspectRatio:
+                                  controller.playerController.value.aspectRatio,
+                              child: VideoPlayer(controller.playerController),
+                            ),
+                            controller.playing == false
+                                ? Container(
+                                    height: height / 3.5,
+                                    decoration: const BoxDecoration(
+                                        color: Colors.black45),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Customcontiner(
+                                            hight: 60,
+                                            width: 60,
+                                            ontap: () {},
+                                            icon: Icons.next_plan),
+                                        Customcontiner(
+                                          hight: 80,
+                                          width: 80,
+                                          ontap: () {
+                                            controller.playvideo();
+                                          },
+                                          icon: controller.playerController
+                                                      .value.isPlaying ==
+                                                  true
+                                              ? Icons.stop_circle
+                                              : Icons.play_circle,
+                                          size: 40,
+                                        ),
+                                        Customcontiner(
+                                            hight: 60,
+                                            width: 60,
+                                            ontap: () {},
+                                            icon: Icons.next_plan)
+                                      ],
+                                    ),
+                                  )
+                                : Container(),
+                            controller.playing == true
+                                ? Container()
+                                : Positioned(
+                                    right: myservrss.sharedPreferences
+                                                .getString('lang') ==
+                                            'ar'
+                                        ? 5
+                                        : null,
+                                    left: myservrss.sharedPreferences
+                                                .getString('lang') ==
+                                            'en'
+                                        ? 5
+                                        : null,
+                                    bottom: 10,
+                                    child: text(
+                                        weight: FontWeight.bold,
+                                        size: 15,
+                                        color: Colors.red,
+                                        title:
+                                            '${controller.videotimer(controller.playerController.value.duration)} / ${controller.videotimer(controller.playerController.value.position)}')),
+                            controller.playing == true
+                                ? Positioned(
+                                    right: myservrss.sharedPreferences
+                                                .getString('lang') ==
+                                            'ar'
+                                        ? 5
+                                        : null,
+                                    left: myservrss.sharedPreferences
+                                                .getString('lang') ==
+                                            'en'
+                                        ? 5
+                                        : null,
+                                    bottom: 15,
+                                    child: Container(
+                                        height: 30,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                            color: Colors.black45,
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
+                                        child: Center(
+                                          child: text(
+                                            size: 15,
+                                            color: Colors.white,
+                                            weight: FontWeight.bold,
+                                            title: controller.videotimer(
+                                                controller.playerController
+                                                    .value.duration),
+                                          ),
+                                        )))
+                                : Container()
+                          ],
+                        ),
+                      )
+                    : Container(),
+                VideoProgressIndicator(
+                  controller.playerController,
+                  allowScrubbing: true,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
+                ),
+                InkWell(
+                  onTap: () {
+                    controller.showabouts();
+                  },
+                  child: Visibility(
+                    visible: controller.about,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const text(
+                                title: 'الاعلى',
+                                size: 20,
+                                weight: FontWeight.bold,
+                              ),
+                              IconButton(
+                                  onPressed: () {
+                                    controller.showdescription();
+                                  },
+                                  icon: const Icon(Icons.arrow_downward))
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: const text(
+                            title: 'باب/اتجاهات ومواضيع',
+                            // color: Color(0xff3C3A3A),
+                            size: 15,
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: text(
+                            title:
+                                '${100} ${'4'.tr} ${Jiffy.parse('2023-09-20 14:52:19').fromNow()}... قراءة المزيد',
+                            // color: const Color(0xff3C3A3A),
+                            size: 15,
+                          ),
+                        )
+                      ],
                     ),
-                    Positioned(
-                      left:
-                          myservrss.sharedPreferences.getString('lang') == 'en'
-                              ? height / 60
-                              : null,
-                      right:
-                          myservrss.sharedPreferences.getString('lang') == 'ar'
-                              ? height / 60
-                              : null,
-                      bottom: height / 40,
-                      child: Container(
-                        height: height / 30,
-                        width: height / 15,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.black45.withOpacity(.5)),
-                        child: const Center(
-                            child: text(
-                          title: '9:20',
-                          color: Colors.white,
-                          weight: FontWeight.bold,
-                          size: 18,
-                        )),
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: height / 40,
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const text(
-                        title: 'الاعلى',
-                        size: 20,
-                        weight: FontWeight.bold,
-                      ),
-                      IconButton(
-                          onPressed: () {
-                            controller.showdescription();
-                          },
-                          icon: const Icon(Icons.arrow_downward))
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: const text(
-                    title: 'باب/اتجاهات ومواضيع',
-                    // color: Color(0xff3C3A3A),
-                    size: 15,
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: text(
-                    title:
-                        '${100} ${'4'.tr} ${Jiffy.parse('2023-09-20 14:52:19').fromNow()}... قراءة المزيد',
-                    // color: const Color(0xff3C3A3A),
-                    size: 15,
                   ),
                 ),
                 Visibility(
@@ -111,8 +208,8 @@ class Viewsdetils extends GetView<ViewController> {
                       ontap: () {
                         controller.showdescription();
                       },
-                      descrition1: 'gfdcxz',
-                      descrition2: 'hfgdfvcx',
+                      descrition1: 'التصنيف : إتجاهات \nومواضع المصطلح:الأعلى',
+                      descrition2: '',
                       image: 'images/ss.PNG',
                       barcode: AppImages.code2,
                     )),
@@ -127,17 +224,30 @@ class Viewsdetils extends GetView<ViewController> {
                         (index) => InkWell(
                               child: Column(
                                 children: [
-                                  Image.asset(
+                                  SvgPicture.asset(
                                     controller.images[index],
-                                    height: 30,
-                                    // index == 3 || index == 4 ? 40 : 30,
-                                    width: 30,
-                                    fit: BoxFit.fill,
+                                    height:
+                                        index == 0 || index == 1 || index == 2
+                                            ? 23
+                                            : 15,
                                     color: myservrss.sharedPreferences
                                                 .getBool('dark') ==
                                             true
                                         ? Colors.white
                                         : Colors.black,
+                                  ),
+                                  // Image.asset(,
+                                  //   controller.images[index],
+                                  //   height:
+                                  //       index == 0 || index == 1 || index == 2
+                                  //           ? 20
+                                  //           : 25,
+                                  //   width: 30,
+                                  //   fit: BoxFit.fill,
+
+                                  // ),
+                                  const SizedBox(
+                                    height: 5,
                                   ),
                                   text(
                                     title: controller.title[index],
@@ -149,7 +259,6 @@ class Viewsdetils extends GetView<ViewController> {
                   ],
                 ),
                 divider(context),
-
                 Row(
                   children: [
                     Expanded(
@@ -182,11 +291,15 @@ class Viewsdetils extends GetView<ViewController> {
                           width: 100,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Colors.white),
+                              color:
+                                  myservrss.sharedPreferences.getBool('dark') ==
+                                          true
+                                      ? Colors.white
+                                      : null),
                           child: Center(
                             child: text(
                               title: '28'.tr,
-                              size: 18,
+                              size: 17,
                               weight: FontWeight.bold,
                               color: const Color(0xff004870),
                             ),
@@ -195,7 +308,6 @@ class Viewsdetils extends GetView<ViewController> {
                   ],
                 ),
                 divider(context)
-              
               ],
             ));
   }

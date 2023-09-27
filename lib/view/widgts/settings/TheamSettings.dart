@@ -1,3 +1,4 @@
+import 'package:deaf_dumb_system/servess.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,6 +10,7 @@ class TheamSettings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Myservrss myservrss = Get.find();
     var height = MediaQuery.of(context).size.height;
     Get.put(SettingsController());
 
@@ -35,10 +37,27 @@ class TheamSettings extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          text(title: '11'.tr),
+                          text(
+                              title:
+                                  myservrss.sharedPreferences.getBool('dark') ==
+                                          true
+                                      ? '12'.tr
+                                      : myservrss.sharedPreferences
+                                                  .getBool('dark') ==
+                                              false
+                                          ? '11'.tr
+                                          : '11'.tr),
                           Switch(
                               // activeColor: const Color(0xffD7D9D7),
-                              value: controller.swich,
+                              value:
+                                  myservrss.sharedPreferences.getBool('dark') ==
+                                          true
+                                      ? true
+                                      : myservrss.sharedPreferences
+                                                  .getBool('dark') ==
+                                              false
+                                          ? false
+                                          : false,
                               onChanged: (val) {
                                 controller.onswich(val);
                               })

@@ -1,6 +1,9 @@
 import 'package:deaf_dumb_system/controller/homeController.dart';
+import 'package:deaf_dumb_system/core/apprequired/text.dart';
 import 'package:deaf_dumb_system/core/functions/translatedata.dart';
 import 'package:deaf_dumb_system/view/screens/search.dart';
+import 'package:deaf_dumb_system/view/screens/view.dart';
+import 'package:deaf_dumb_system/view/widgts/view/customviewwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../widgts/home/listbuilderplayList.dart';
@@ -25,7 +28,7 @@ class HomePage extends StatelessWidget {
                                 myservrss.sharedPreferences.getBool('dark') ==
                                         true
                                     ? Colors.white
-                                    : null,
+                                    : Colors.black,
                           ),
                         ),
                       ),
@@ -34,7 +37,7 @@ class HomePage extends StatelessWidget {
                             onPressed: () {
                               controller.onsearch();
                             },
-                            icon:const Icon(
+                            icon: const Icon(
                               Icons.search,
                               size: 30,
                             )),
@@ -67,7 +70,7 @@ class HomePage extends StatelessWidget {
                               const ListBuilderVideos()
                             ],
                           )
-                        : const Search(),
+                        : const Search()
                   ],
                 ),
               ),

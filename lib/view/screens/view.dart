@@ -9,11 +9,9 @@ import '../widgts/view/customviewwidget.dart';
 class Views extends StatelessWidget {
   const Views({super.key});
 
-
-
   @override
   Widget build(BuildContext context) {
-    Get.put(ViewController());
+    ViewController controller = Get.put(ViewController());
 
     return Scaffold(
       body: Container(
@@ -23,9 +21,10 @@ class Views extends StatelessWidget {
               maxHeight: MediaQuery.of(context).size.height,
               builder: (height, width) {
                 if (height < 100)
-                  return  Row(
+                  return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
+                      text(title: controller.showcategModel.category!),
                       Image.asset('images/ss.PNG'),
                       text(title: 'التصنيف اتجاهات'),
                       Icon(Icons.play_arrow),

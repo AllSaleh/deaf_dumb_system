@@ -67,7 +67,7 @@ class Descriptions extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Row(
                       children: [
-                        Image.asset(
+                        Image.network(
                           image,
                           height: hight / 20,
                           fit: BoxFit.fill,

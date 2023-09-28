@@ -1,7 +1,7 @@
-
-
+import 'package:deaf_dumb_system/api/linksapi.dart';
 import 'package:deaf_dumb_system/controller/viewcontroller.dart';
 import 'package:deaf_dumb_system/core/AppRequired/Text.dart';
+import 'package:deaf_dumb_system/core/functions/translatedata.dart';
 import 'package:deaf_dumb_system/servess.dart';
 import 'package:deaf_dumb_system/view/widgts/view/Custoncontiner.dart';
 import 'package:flutter/material.dart';
@@ -92,7 +92,9 @@ class Viewsdetils extends GetView<ViewController> {
                                       ],
                                     ),
                                   )
-                                : Container(),
+                                : SizedBox(
+                                    height: height / 3.5,
+                                  ),
                             controller.playing == true
                                 ? Container()
                                 : Positioned(
@@ -147,7 +149,9 @@ class Viewsdetils extends GetView<ViewController> {
                           ],
                         ),
                       )
-                    : Container(),
+                    : SizedBox(
+                        height: height / 3.5,
+                      ),
                 VideoProgressIndicator(
                   controller.playerController,
                   allowScrubbing: true,
@@ -168,8 +172,10 @@ class Viewsdetils extends GetView<ViewController> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const text(
-                                title: 'الاعلى',
+                              text(
+                                title: translatadata(
+                                    controller.showcategModel.word,
+                                    controller.showcategModel.wordEn),
                                 size: 20,
                                 weight: FontWeight.bold,
                               ),
@@ -183,8 +189,8 @@ class Viewsdetils extends GetView<ViewController> {
                         ),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: const text(
-                            title: 'باب/اتجاهات ومواضيع',
+                          child: text(
+                            title: controller.showcategModel.wordComplement!,
                             // color: Color(0xff3C3A3A),
                             size: 15,
                           ),
@@ -208,9 +214,10 @@ class Viewsdetils extends GetView<ViewController> {
                       ontap: () {
                         controller.showdescription();
                       },
-                      descrition1: 'التصنيف : إتجاهات \nومواضع المصطلح:الأعلى',
+                      descrition1: controller.showcategModel.description!,
                       descrition2: '',
-                      image: 'images/ss.PNG',
+                      image:
+                          '${Applinks.files}/${controller.showcategModel.descriptionImage}',
                       barcode: AppImages.code2,
                     )),
                 SizedBox(

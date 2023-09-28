@@ -2,8 +2,12 @@ import 'package:deaf_dumb_system/controller/homeController.dart';
 import 'package:deaf_dumb_system/core/AppRequired/Text.dart';
 
 import 'package:deaf_dumb_system/servess.dart';
+import 'package:deaf_dumb_system/view/widgts/search/historysearch.dart';
+import 'package:deaf_dumb_system/view/widgts/search/micsearch.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../widgts/search/textformfild.dart';
 
 class Search extends StatelessWidget {
   const Search({super.key});
@@ -26,90 +30,25 @@ class Search extends StatelessWidget {
                       },
                       icon: const Icon(Icons.arrow_back),
                     ),
-                    Expanded(
-                        child: TextFormField(
-                      // autofocus: true,
-                      cursorColor: Colors.black,
-                      cursorHeight: 25,
-                      decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  const BorderSide(color: Colors.transparent),
-                              borderRadius: BorderRadius.circular(20)),
-                          hintText: '8'.tr,
-                          hintStyle:
-                              TextStyle(color: Colors.black.withOpacity(.5)),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide:
-                                  const BorderSide(color: Color(0xffEBEBEB))),
-                          contentPadding: const EdgeInsets.symmetric(
-                              vertical: 8, horizontal: 10),
-                          border: OutlineInputBorder(
-                              borderSide:
-                                  const BorderSide(color: Colors.transparent),
-                              borderRadius: BorderRadius.circular(20)),
-                          filled: true,
-                          fillColor: const Color(0xffEBEBEB)),
+                    Expanded(child: CustomTextForm(
+                      onchange: (val) {
+                        controller.onchange(val);
+                      },
                     )),
-                    InkWell(
-                      onTap: () {},
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Container(
-                          height: 40,
-                          width: 35,
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle, color: Colors.black),
-                          child: const Icon(
-                            Icons.mic,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    )
+                    const MicSearch()
                   ],
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 25,
-                ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 5,
-                  itemBuilder: (BuildContext context, int index) {
-                    return InkWell(
-                      onTap: () {},
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                child: ListTile(
-                              leading: const Icon(Icons.history),
-                              title: text(
-                                title: 'التصنيف:اتجاهات ومواضع',
-                                size: 18,
-                                align: myservrss.sharedPreferences
-                                            .getString('lang') ==
-                                        'en'
-                                    ? TextAlign.end
-                                    : TextAlign.start,
-                              ),
-                            )),
-                            Image.asset(
-                              'images/ss.PNG',
-                              width: 120,
-                              height: 70,
-                              fit: BoxFit.fill,
-                            )
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                controller.isSearchs == false
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height / 25,
+                          ),
+                          const Historysearch(),
+                        ],
+                      )
+                    : text(title: 'title')
               ],
             ),
             onWillPop: () {

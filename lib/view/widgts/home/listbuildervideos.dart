@@ -1,56 +1,55 @@
 import 'package:deaf_dumb_system/controller/homeController.dart';
+import 'package:deaf_dumb_system/core/functions/translatedata.dart';
+import 'package:deaf_dumb_system/model/models/showcatecsmodel.dart';
 import 'package:deaf_dumb_system/servess.dart';
 import 'package:deaf_dumb_system/view/widgts/home/customlisttile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:video_player/video_player.dart';
 
 import '../../../core/AppRequired/AppImages.dart';
 import '../../../core/AppRequired/Text.dart';
 
-class ListBuilderVideos extends StatelessWidget {
-  const ListBuilderVideos({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: 2,
-      itemBuilder: (BuildContext context, int index) {
-        return const CustomVideosList();
-      },
-    );
-  }
-}
-
 class CustomVideosList extends GetView<HomeController> {
-  const CustomVideosList({super.key});
+  final ShowcategModel showcategModel;
+  const CustomVideosList({super.key, required this.showcategModel});
 
   @override
   Widget build(BuildContext context) {
     Myservrss myservrss = Get.find();
     return InkWell(
       onTap: () {
-        controller.goToView();
+        controller.goToView(showcategModel);
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Column(children: [
-          Image.asset(
-            'images/ss.PNG',
-          ),
+          // controller.videoPlayerController!.value.isInitialized == true
+          //     ? AspectRatio(
+          //         aspectRatio:
+          //             controller.videoPlayerController!.value.aspectRatio,
+          //         child: VideoPlayer(controller.videoPlayerController!),
+          //       )
+          //     :
+               Image.asset(
+                  'images/ss.PNG',
+                ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const CircleAvatar(
-                backgroundImage: AssetImage(
-                  AppImages.log,
-                ),
-              ),
+              showcategModel.descriptionImage == null
+                  ?const CircleAvatar(
+                      backgroundImage: AssetImage('images/sh.png'),
+                    )
+                  : CircleAvatar(
+                      backgroundImage:
+                          NetworkImage(showcategModel.descriptionImage!),
+                    ),
               Expanded(
                 child: ListTile(
                   title: text(
-                    title: 'الاتجاهات والمواضيع الاعلى',
+                    title: translatadata(
+                        showcategModel.category, showcategModel.categoryEn),
                     align: myservrss.sharedPreferences.getString('lang') == 'en'
                         ? TextAlign.end
                         : TextAlign.start,

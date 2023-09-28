@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:deaf_dumb_system/api/linksapi.dart';
 import 'package:deaf_dumb_system/core/AppRequired/AppImages.dart';
+import 'package:deaf_dumb_system/model/models/showcatecsmodel.dart';
 import 'package:deaf_dumb_system/servess.dart';
 
 import 'package:get/get.dart';
@@ -9,6 +11,7 @@ import 'package:video_player/video_player.dart';
 
 class ViewController extends GetxController {
   late VideoPlayerController playerController;
+  late ShowcategModel showcategModel;
   late Future<void> inilaizvideo;
   Myservrss myservrss = Get.find();
   bool description = false;
@@ -31,7 +34,7 @@ class ViewController extends GetxController {
 
   // String timer(duration) {
   //   Timer(duration, () {
-  //     return 
+  //     return
   //   });
   // }
 
@@ -66,7 +69,8 @@ class ViewController extends GetxController {
   }
 
   viewvideo() {
-    playerController = VideoPlayerController.asset('images/FlutterThemes.mp4')
+    playerController = VideoPlayerController.networkUrl(
+        Uri.parse('${Applinks.files}/${showcategModel.video}'))
       ..initialize().then((_) {
         update();
       });
@@ -83,6 +87,7 @@ class ViewController extends GetxController {
 
   @override
   void onInit() {
+    showcategModel = Get.arguments['showcategModel'];
     viewvideo();
     changelocal();
 

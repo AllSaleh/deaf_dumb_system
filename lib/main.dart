@@ -7,6 +7,7 @@ import 'package:deaf_dumb_system/test.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'binding.dart';
 import 'core/localization/translation.dart';
 
 main() async {
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
     LocalizationsController controller = Get.put(LocalizationsController());
     return GetMaterialApp(
       locale: controller.language,
+      initialBinding: Inisilbinding(),
       // themeMode: myservrss.sharedPreferences.getBool('dark')==true?Theames.dark:null,
       theme: myservrss.sharedPreferences.getBool('dark') == true
           ? Theames.dark

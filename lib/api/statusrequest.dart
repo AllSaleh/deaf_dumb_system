@@ -1,4 +1,5 @@
 enum StatusRequst{
+  none,
 
   Sucsess,
   Loading,
